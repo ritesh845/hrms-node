@@ -15,6 +15,10 @@ module.exports = (sequelize, DataTypes) => {
         email: DataTypes.STRING,
         password: DataTypes.TEXT,
         otp: DataTypes.STRING,
+        dob: DataTypes.DATE,
+        age: DataTypes.INTEGER,
+        gender: DataTypes.ENUM("Male", 'Female', 'Other'),
+        status: DataTypes.ENUM("Active", 'Inactive'),
         emailVerifyAt: DataTypes.DATE,
         expireAt: DataTypes.DATE,
 
