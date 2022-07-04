@@ -17,6 +17,7 @@ module.exports = (sequelize, DataTypes) => {
         otp: DataTypes.STRING,
         dob: DataTypes.DATE,
         age: DataTypes.INTEGER,
+        photo: DataTypes.STRING,
         gender: DataTypes.ENUM("Male", 'Female', 'Other'),
         status: DataTypes.ENUM("Active", 'Inactive'),
         emailVerifyAt: DataTypes.DATE,

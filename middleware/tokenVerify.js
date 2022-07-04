@@ -5,7 +5,7 @@ module.exports = function tokenVerify(req, res, next) {
     try {
         jwt.verify(token, 'secrettext', function(err, decoded) {
             if (err) {
-                res.send(401, "Unauthorized");
+                return res.status(401).json({ status: "error", code: 401, message: "Unauthorized", data: {} });
             } else {
                 next();
             }

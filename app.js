@@ -28,7 +28,9 @@ app.use((req, res, next) => {
 });
 
 const authRoutes = require('./routes/auth.routes');
+const userRoutes = require('./routes/user.routes');
 app.use('/api', authRoutes);
+app.use('/api', userRoutes);
 app.get('/', function(req, res) {
     res.send('Page under construction.');
 });

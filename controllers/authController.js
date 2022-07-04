@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt');
 const db = require("../models");
 let jwt = require('jsonwebtoken');
 const User = db.User;
-const transport = require('../config/mail.js')
+const transport = require('../config/mail.js');
 const hbs = require('nodemailer-express-handlebars');
 const path = require('path');
 

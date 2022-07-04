@@ -27,6 +27,12 @@ module.exports = {
                     type: Sequelize.ENUM("Active", 'Inactive'),
                     defaultValue: 'Active'
                 }
+            ),
+            queryInterface.addColumn(
+                'Users',
+                'photo', {
+                    type: Sequelize.STRING
+                }
             )
 
         ]);
@@ -38,6 +44,7 @@ module.exports = {
             queryInterface.removeColumn('Users', 'age'),
             queryInterface.removeColumn('Users', 'gender'),
             queryInterface.removeColumn('Users', 'status'),
+            queryInterface.removeColumn('Users', 'photo')
         ]);
     }
 };
