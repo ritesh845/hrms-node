@@ -36,7 +36,7 @@ exports.createUser = async(req, res) => {
         return res.status(500).json({ status: "error", code: 500, message: err.message || "Something is wrong!", data: {} });
     };
 }
-exports.updateUser = async(req, res) => {
+exports.updateUser = (req, res) => {
     try {
         let user = {
             name: req.body.name,
@@ -64,4 +64,37 @@ exports.updateUser = async(req, res) => {
     } catch (err) {
         return res.status(500).json({ status: "error", code: 500, message: err.message || "Something is wrong!", data: {} });
     };
+}
+exports.deleteUser = async(req, res) => {
+    const id = req.params.id;
+    try {
+        const user = await User.findOne({
+            where: { id }
+        });
+        await user.destroy();
+        return res.status(200).json({ status: "success", code: 200, message: "User deleted successfully", data: {} });
+    } catch (err) {
+        return res.status(500).json({ status: "error", code: 500, message: err.message || "Something is wrong!", data: {} });
+    }
+
+}
+
+exports.findUser = async(req, res) => {
+    const id = req.params.id;
+    try {
+        const user = await User.findOne({
+            where: { id },
+            attributes: {
+                exclude: ['password', 'otp', 'emailVerifyAt', 'expireAt']
+            }
+        });
+        if (user) {
+            return res.status(200).json({ status: "success", code: 200, message: "User find successfully", data: user });
+        } else {
+            return res.status(404).json({ status: "error", code: 404, message: "User Not Found", data: {} });
+        }
+
+    } catch (err) {
+        return res.status(500).json({ status: "error", code: 500, message: err.message || "Something is wrong!", data: {} });
+    }
 }
