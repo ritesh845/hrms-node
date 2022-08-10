@@ -32,7 +32,7 @@ const userRoutes = require('./routes/user.routes');
 app.use('/api', authRoutes);
 app.use('/api', userRoutes);
 app.get('/', function(req, res) {
-    res.send('Page under construction.');
+    res.sendFile(__dirname + '/index.html');
 });
 
 // app.use(express.static('uploads/'));
